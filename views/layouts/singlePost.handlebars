@@ -1,0 +1,14 @@
+<h1>{{post.title}}</h1>
+<p>{{post.content}}</p>
+<p>Posted by {{post.user.username}} on {{post.createdAt}}</p>
+
+{{#each post.comments}}
+  <div>
+    <p>{{this.comment_text}} - {{this.user.username}} on {{this.createdAt}}</p>
+  </div>
+{{/each}}
+
+<form action="/post/{{post.id}}/comment" method="POST">
+  <textarea name="comment_text"></textarea>
+  <button type="submit">Add Comment</button>
+</form>
